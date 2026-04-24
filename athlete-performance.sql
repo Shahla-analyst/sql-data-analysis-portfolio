@@ -19,4 +19,10 @@ GROUP BY workout_type;
 SELECT athlete, SUM(duration_min) AS total_time
 FROM dataset
 GROUP BY athlete
-ORDER BY total_time DESC;
+ORDER BY SUM(duration_min) DESC
+LIMIT 1;
+-- 5. Ranking athletes by total training time
+SELECT athlete, SUM(duration_min) AS total_time,
+       RANK() OVER (ORDER BY SUM(duration_min) DESC) AS rank_position
+FROM dataset
+GROUP BY athlete;
