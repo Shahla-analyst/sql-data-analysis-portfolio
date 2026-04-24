@@ -32,8 +32,14 @@ Determines which athlete trained the most.
 
 ### 5. Ranking Athletes
 Ranks athletes based on total training time using window functions.
+## 💻 Example Query
 
----
+```sql
+SELECT athlete, SUM(duration_min) AS total_time
+FROM dataset
+GROUP BY athlete
+ORDER BY total_time DESC;
+```
 
 ## 📈 Key Insights
 
